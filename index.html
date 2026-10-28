@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arin Vale — Freefall</title>
+<meta name="description" content="Arin Vale, independent designer and art director. A portfolio told in one fall.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/fall/000.webp">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-locked">
+
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader" role="dialog" aria-label="Loading">
+  <div class="loader-shaft"><i id="loadFill"></i></div>
+  <p class="loader-status"><span id="loadPct">0</span>% of the fall loaded</p>
+  <div class="loader-actions">
+    <button class="btn btn--solid" data-enter="sound" data-cursor="Jump">Enter with sound</button>
+    <button class="btn" data-enter="mute" data-cursor="Jump">Enter without sound</button>
+  </div>
+</div>
+
+<!-- ============ CHROME ============ -->
+<header class="nav">
+  <button class="nav-menu" id="menuBtn" aria-expanded="false" aria-controls="menu" data-cursor="Open">Menu</button>
+  <a class="nav-mark" href="#top" data-jump="top">Arin Vale® <em>designer &amp; art director</em></a>
+  <div class="nav-right">
+    <button class="nav-sound" id="soundBtn" aria-pressed="false" data-cursor="Listen">
+      <i class="bars" aria-hidden="true"><b></b><b></b><b></b><b></b></i><span>Sound off</span>
+    </button>
+    <a class="nav-talk" href="#contact" data-jump="contact">Let's talk</a>
+  </div>
+</header>
+
+<nav class="menu" id="menu" aria-hidden="true">
+  <ol class="menu-list">
+    <li><a href="#top" data-jump="story:0" data-img="assets/fall/060.webp"><span>The leap</span></a></li>
+    <li><a href="#top" data-jump="story:.53" data-img="assets/fall/250.webp"><span>The noise</span></a></li>
+    <li><a href="#top" data-jump="story:.77" data-img="assets/fall/440.webp"><span>Rise</span></a></li>
+    <li><a href="#work" data-jump="work" data-img="assets/fall/288.webp"><span>Selected work</span></a></li>
+    <li><a href="#about" data-jump="about" data-img="assets/fall/205.webp"><span>About</span></a></li>
+    <li><a href="#services" data-jump="services" data-img="assets/portal/150.webp"><span>Services</span></a></li>
+    <li><a href="#portal" data-jump="portal" data-img="assets/portal/072.webp"><span>The portal</span></a></li>
+    <li><a href="#contact" data-jump="contact" data-img="assets/portal/228.webp"><span>Contact</span></a></li>
+  </ol>
+  <div class="menu-preview" aria-hidden="true"><img alt="" src="assets/fall/060.webp"></div>
+  <p class="menu-foot">Press Esc to close</p>
+</nav>
+
+<div class="hud" aria-hidden="true">
+  <div class="hud-chapter"><span class="hud-num">01</span><span class="hud-name">The leap</span></div>
+  <div class="hud-bar"><i></i></div>
+  <div class="hud-read">Altitude 12 400 m</div>
+</div>
+
+<div class="cursor" aria-hidden="true"><i class="cursor-dot"></i><i class="cursor-ring"><span></span></i></div>
+<div class="grain" aria-hidden="true"></div>
+
+<main id="top">
+
+  <!-- ============ STORY: fall → impact → noise → rise → index ============ -->
+  <section class="story" id="story" aria-label="Intro story">
+    <div class="stage">
+      <div class="stage-inner">
+        <canvas class="ambient" id="ambient" aria-hidden="true"></canvas>
+
+        <div class="world world--back" aria-hidden="true"><div class="cam"></div></div>
+
+        <div class="index-name" aria-hidden="true">Arin Vale</div>
+
+        <div class="film" id="film"><canvas id="filmCanvas" aria-label="A figure falls through a shaft of golden light, lands in a crowd and stands up glowing"></canvas></div>
+        <div class="vignette" aria-hidden="true"></div>
+
+        <div class="index-tiles" id="tiles">
+          <button class="tile" data-go="0" data-cursor="View" data-x="-.30" data-y="-.25" data-s=".24" data-ar="1.2" data-z="-120" data-d="0"><img src="assets/fall/060.webp" alt=""><span class="tile-cap">Solace Records</span></button>
+          <button class="tile" data-go="0" data-cursor="View" data-x=".30" data-y="-.26" data-s=".18" data-ar=".82" data-z="-60" data-d=".08"><img src="assets/fall/205.webp" alt=""><span class="tile-cap">Solace sleeves</span></button>
+          <button class="tile" data-go="3" data-cursor="View" data-x="-.33" data-y=".18" data-s=".12" data-ar="1" data-z="40" data-d=".18"><img src="assets/portal/228.webp" alt="" style="object-position:50% 30%"><span class="tile-cap">Threshold</span></button>
+          <button class="tile" data-go="1" data-cursor="View" data-x=".31" data-y=".19" data-s=".19" data-ar="1" data-z="-20" data-d=".12"><img src="assets/fall/288.webp" alt=""><span class="tile-cap">Emberfall</span></button>
+          <button class="tile tile--gen gen-sun" data-go="about" data-cursor="View" data-x="-.07" data-y="-.43" data-s=".11" data-ar="1.3" data-z="-260" data-d=".26"><span class="tile-cap">Halcyon Type</span></button>
+          <button class="tile" data-go="2" data-cursor="View" data-x=".06" data-y=".43" data-s=".13" data-ar="1" data-z="-200" data-d=".3"><img src="assets/fall/360.webp" alt="" style="object-position:50% 45%"><span class="tile-cap">The Crowd</span></button>
+          <button class="tile is-mono" data-go="2" data-cursor="View" data-x="-.46" data-y="-.02" data-s=".15" data-ar=".75" data-z="-320" data-d=".22"><img src="assets/fall/250.webp" alt=""><span class="tile-cap">The Crowd, posters</span></button>
+          <button class="tile" data-go="3" data-cursor="View" data-x=".47" data-y="-.03" data-s=".13" data-ar=".7" data-z="-280" data-d=".34"><img src="assets/portal/036.webp" alt=""><span class="tile-cap">Threshold, launch</span></button>
+          <button class="tile tile--gen gen-type" data-go="services" data-cursor="View" data-x="-.20" data-y=".41" data-s=".10" data-ar=".8" data-z="-160" data-d=".38"><b>F/R</b><span class="tile-cap">Kiln &amp; Ember</span></button>
+          <button class="tile is-iris" data-go="3" data-cursor="View" data-x=".19" data-y="-.42" data-s=".10" data-ar="1" data-z="-220" data-d=".42"><img src="assets/portal/150.webp" alt=""><span class="tile-cap">Threshold, film</span></button>
+        </div>
+
+        <div class="world world--front" aria-hidden="true"><div class="cam"></div></div>
+        <div class="world world--ui"><div class="cam"></div></div>
+
+        <div class="rise" aria-hidden="true"><span>R</span><span>I</span><span>S</span><span>E</span></div>
+        <div class="shock" aria-hidden="true"></div>
+
+        <div class="hero" id="hero">
+          <p class="hero-intro">Independent designer and art director.<br>This portfolio starts with a fall.</p>
+          <h1 class="hero-name" aria-label="Arin Vale"><span class="hn">A</span><span class="hn">R</span><span class="hn">I</span><span class="hn">N</span><span class="hn sp"> </span><span class="hn">V</span><span class="hn">A</span><span class="hn">L</span><span class="hn">E</span></h1>
+          <div class="hero-foot">
+            <button class="hero-cue" data-jump="story:.2" data-cursor="Fall"><span>Scroll to let go</span><i></i></button>
+            <button class="hero-skip" data-jump="work">Skip to the work</button>
+          </div>
+        </div>
+
+        <div class="flash" aria-hidden="true"><b>Impact</b></div>
+        <div class="flash flash--ember" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SELECTED WORK ============ -->
+  <section class="work" id="work" aria-label="Selected work">
+    <div class="work-stage">
+      <article class="screen" style="--c:var(--molten)">
+        <header class="screen-bar"><span>Selected work</span><span>Solace Records</span><span>Case 1 of 4</span></header>
+        <div class="screen-title" aria-hidden="true"><span>Solace&nbsp; Solace&nbsp; Solace&nbsp; Solace&nbsp;</span></div>
+        <div class="disc">
+          <svg class="disc-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring0" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#ring0" textLength="548" lengthAdjust="spacing">Solace Records — identity system, 2026 — one label, 214 sleeves —</textPath></text></svg>
+          <div class="disc-face"><img src="assets/fall/090.webp" alt="Golden spiral artwork from the Solace Records identity"></div>
+        </div>
+        <div class="screen-meta">
+          <h3>Solace</h3>
+          <p>An identity for an ambient record label that sounds like light through dust. One spiral mark, 214 sleeves, zero templates.</p>
+          <dl><dt>Role</dt><dd>Identity, packaging, motion</dd><dt>Year</dt><dd>2026</dd></dl>
+        </div>
+        <a class="screen-cta magnet" href="#contact" data-jump="contact" data-cursor="Talk">Talk about a project like this</a>
+        <span class="screen-mark" aria-hidden="true">©® 2026</span>
+      </article>
+
+      <article class="screen" style="--c:var(--ember)">
+        <header class="screen-bar"><span>Selected work</span><span>Emberfall</span><span>Case 2 of 4</span></header>
+        <div class="screen-title" aria-hidden="true"><span>Emberfall&nbsp; Emberfall&nbsp; Emberfall&nbsp;</span></div>
+        <div class="disc">
+          <svg class="disc-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring1" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#ring1" textLength="548" lengthAdjust="spacing">Emberfall — title sequence and key art, 2025 — 1 game, 90 seconds —</textPath></text></svg>
+          <div class="disc-face"><img src="assets/fall/290.webp" alt="Ring of fire spreading through a crowd, from the Emberfall title sequence"></div>
+        </div>
+        <div class="screen-meta">
+          <h3>Emberfall</h3>
+          <p>Title sequence and key art for an indie game about a city that catches fire one person at a time. Ninety seconds, one shockwave.</p>
+          <dl><dt>Role</dt><dd>Art direction, title design</dd><dt>Year</dt><dd>2025</dd></dl>
+        </div>
+        <a class="screen-cta magnet" href="#contact" data-jump="contact" data-cursor="Talk">Talk about a project like this</a>
+        <span class="screen-mark" aria-hidden="true">©® 2025</span>
+      </article>
+
+      <article class="screen" style="--c:var(--bone)">
+        <header class="screen-bar"><span>Selected work</span><span>The Crowd</span><span>Case 3 of 4</span></header>
+        <div class="screen-title" aria-hidden="true"><span>The Crowd&nbsp; The Crowd&nbsp; The Crowd&nbsp;</span></div>
+        <div class="disc is-mono">
+          <svg class="disc-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring2" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#ring2" textLength="548" lengthAdjust="spacing">The Crowd — poster series, Lisbon Design Week 2025 — 40 posters —</textPath></text></svg>
+          <div class="disc-face"><img src="assets/fall/236.webp" alt="A glowing figure falling into a dark crowd, from The Crowd poster series"></div>
+        </div>
+        <div class="screen-meta">
+          <h3>The Crowd</h3>
+          <p>Forty posters for Lisbon Design Week, each one a single bright figure in a sea of grey. The festival sold out in nine days.</p>
+          <dl><dt>Role</dt><dd>Poster design, exhibition identity</dd><dt>Year</dt><dd>2025</dd></dl>
+        </div>
+        <a class="screen-cta magnet" href="#contact" data-jump="contact" data-cursor="Talk">Talk about a project like this</a>
+        <span class="screen-mark" aria-hidden="true">©® 2025</span>
+      </article>
+
+      <article class="screen" style="--c:var(--iris)">
+        <header class="screen-bar"><span>Selected work</span><span>Threshold</span><span>Case 4 of 4</span></header>
+        <div class="screen-title" aria-hidden="true"><span>Threshold&nbsp; Threshold&nbsp; Threshold&nbsp;</span></div>
+        <div class="disc">
+          <svg class="disc-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring3" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#ring3" textLength="548" lengthAdjust="spacing">Threshold — immersive website, 2024 — 1 door, 6 minutes of scroll —</textPath></text></svg>
+          <div class="disc-face"><img src="assets/portal/072.webp" alt="A burning doorway opening in the clouds, from the Threshold website"></div>
+        </div>
+        <div class="screen-meta">
+          <h3>Threshold</h3>
+          <p>A scroll-driven website for an architecture studio that designs entrances. Visitors spend an average of six minutes walking through one door.</p>
+          <dl><dt>Role</dt><dd>Concept, web design, motion</dd><dt>Year</dt><dd>2024</dd></dl>
+        </div>
+        <a class="screen-cta magnet" href="#contact" data-jump="contact" data-cursor="Talk">Talk about a project like this</a>
+        <span class="screen-mark" aria-hidden="true">©® 2024</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about" aria-label="About">
+    <p class="manifesto" id="manifesto">I design for the second after the fall, when everything is noise and one idea refuses to stay down. Identities, motion and websites for brands that would rather be remembered than liked.</p>
+    <div class="about-cols">
+      <p>Twelve years, four studios, one rule: if it looks like everything else, it isn't finished yet.</p>
+      <p>Based in Lisbon. Working with teams in London, Berlin, New York and Tokyo. Booking projects from January 2027.</p>
+    </div>
+  </section>
+
+  <div class="marquee" aria-label="Selected clients">
+    <div class="marquee-row" data-dir="-1"><div class="marquee-track"><span>Solace Records</span><span class="o">Kiln &amp; Ember</span><span>Northbound Air</span><span class="o">Halcyon Type</span><span>Atlas Optics</span><span class="o">Mirage FM</span></div></div>
+    <div class="marquee-row" data-dir="1"><div class="marquee-track"><span class="o">Ostra Studio</span><span>Lisbon Design Week</span><span class="o">Vessel</span><span>Paper Moon</span><span class="o">Field Notes Film</span><span>Kōen</span></div></div>
+  </div>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services" id="services" aria-label="Services">
+    <h2 class="services-head">What I can do for you</h2>
+    <ul class="svc-list">
+      <li class="svc" data-img="assets/fall/090.webp" data-cursor="Ask"><a href="#contact" data-jump="contact"><span class="svc-name">Brand identity</span><span class="svc-desc">Logos are the least of it. Systems that hold up on a sleeve, a screen and a stage.</span></a></li>
+      <li class="svc" data-img="assets/fall/288.webp" data-cursor="Ask"><a href="#contact" data-jump="contact"><span class="svc-name">Art direction</span><span class="svc-desc">Campaigns and shoots built on one clear idea, carried all the way to the last frame.</span></a></li>
+      <li class="svc" data-img="assets/fall/205.webp" data-cursor="Ask"><a href="#contact" data-jump="contact"><span class="svc-name">Motion &amp; titles</span><span class="svc-desc">Type that moves with intent. Title sequences, idents and launch films.</span></a></li>
+      <li class="svc" data-img="assets/portal/120.webp" data-cursor="Ask"><a href="#contact" data-jump="contact"><span class="svc-name">Web experiences</span><span class="svc-desc">Sites like this one: scroll-driven, cinematic and made to be shared.</span></a></li>
+      <li class="svc" data-img="assets/fall/440.webp" data-cursor="Ask"><a href="#contact" data-jump="contact"><span class="svc-name">Type &amp; lettering</span><span class="svc-desc">Custom wordmarks and display faces for brands with a voice of their own.</span></a></li>
+    </ul>
+    <div class="svc-preview" aria-hidden="true"><img alt="" src="assets/fall/090.webp"></div>
+  </section>
+
+  <!-- ============ PORTAL ============ -->
+  <section class="portal" id="portal" aria-label="Contact intro">
+    <div class="portal-stage">
+      <canvas id="portalCanvas" aria-label="A man in a suit walks out of a burning doorway in the clouds"></canvas>
+      <div class="tunnel" aria-hidden="true"><div class="tunnel-cam"></div></div>
+      <div class="portal-shade" aria-hidden="true"></div>
+      <p class="portal-line" data-w=".02,.2">Every fall needs a way out.</p>
+      <p class="portal-line" data-w=".22,.44">Some doors only open from the inside.</p>
+      <p class="portal-line" data-w=".48,.72">This is where you come in.</p>
+      <div class="portal-cta">
+        <h2>Let's make something that refuses to stay down.</h2>
+        <div class="portal-actions">
+          <a class="btn btn--solid magnet" href="mailto:hello@arinvale.studio?subject=New%20project" data-cursor="Write">Write to me</a>
+          <button class="btn magnet" id="copyEmail" data-email="hello@arinvale.studio" data-cursor="Copy">Copy email</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <footer class="contact" id="contact">
+    <p class="contact-kicker">Taking on four projects in 2027. Two are left.</p>
+    <a class="contact-mail magnet" href="mailto:hello@arinvale.studio" data-cursor="Write">hello@arinvale.studio</a>
+    <div class="contact-grid">
+      <ul class="contact-social">
+        <li><a href="#" data-cursor="Open">Instagram</a></li>
+        <li><a href="#" data-cursor="Open">Behance</a></li>
+        <li><a href="#" data-cursor="Open">Dribbble</a></li>
+        <li><a href="#" data-cursor="Open">LinkedIn</a></li>
+      </ul>
+      <p class="contact-time">Lisbon, <span id="clock">--:--</span><br>Replies within a day</p>
+      <button class="contact-again magnet" data-jump="top" data-cursor="Again">Fall again <span aria-hidden="true">↑</span></button>
+    </div>
+    <p class="contact-legal">© 2026 Arin Vale. Made with gravity.</p>
+  </footer>
+</main>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

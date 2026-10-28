@@ -1,0 +1,7 @@
+# Media is not included in this repository
+assets/
+*.mp4
+*.webp
+*.wav
+showcase/track.json
+__pycache__/
